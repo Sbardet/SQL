@@ -1,0 +1,21 @@
+CREATE TABLE pet_shop (id INTEGER PRIMARY KEY, Item_Name TEXT, Inventory INTEGER, Price INTEGER, Aisel INTEGER); 
+
+INSERT INTO pet_shop VALUES (1, "Collars", 20,10,1);
+INSERT INTO pet_shop VALUES (2, "Leash",20,15,1);
+INSERT INTO pet_shop VALUES (3, "Dog Food", 45,50,3);
+INSERT INTO pet_shop VALUES (4, "Feeding bowl", 10,10,3);
+INSERT INTO pet_shop VALUES (5, "Water bowl",10,10,3);
+INSERT INTO pet_shop VALUES (6, "Dog Crate", 15,50,4);
+INSERT INTO pet_shop VALUES (7, "Soft toys", 50,5,2);
+INSERT INTO pet_shop VALUES (8, "Hard toys", 50,10,2);
+INSERT INTO pet_shop VALUES (9, "Treats", 30,7,3);
+INSERT INTO pet_shop VALUES (10, "Grooming Brush",5,5,5);
+INSERT INTO pet_shop VALUES (11, "Dog Bed", 15,40,4);
+INSERT INTO pet_shop VALUES (12, "Dog Shampoo", 10,10,5);
+INSERT INTO pet_shop VALUES (13, "Interactive toys", 25,30,2);
+INSERT INTO pet_shop VALUES (14, "Dog Harness", 20,20,1);
+INSERT INTO pet_shop VALUES (15, "Training Treats", 15,10,3); 
+
+SELECT * FROM pet_shop;
+
+SELECT * FROM pet_shop WHERE Inventory > 10 ORDER BY Aisel;
