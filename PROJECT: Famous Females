@@ -1,0 +1,81 @@
+CREATE TABLE Famous_Females (id INTEGER PRIMARY KEY, Name TEXT, Age Integer);
+
+INSERT INTO Famous_Females VALUES ( 1, "Emma Chamberlin", 20) ;
+INSERT INTO Famous_Females VALUES ( 2, "Kim Kardasion", 41); 
+INSERT INTO Famous_Females VALUES ( 3, "Alex Cooper", 27);
+INSERT INTO Famous_Females VALUES ( 4, "Gigi Hadid", 27); 
+INSERT INTO Famous_Females VALUES ( 5, "Lizzo", 34);
+INSERT INTO Famous_Females VALUES ( 6, "Serena Williams", 40); 
+INSERT INTO Famous_Females VALUES ( 7, "Kate Moss", 48); 
+INSERT INTO Famous_Females VALUES ( 8, "Kylie Jenner", 24); 
+INSERT INTO Famous_Females VALUES ( 9, "Tina Fay", 51); 
+INSERT INTO Famous_Females VALUES ( 10, "Stevie Nicks", 73); 
+INSERT INTO Famous_Females VALUES ( 11, "Meryl Streep", 72); 
+INSERT INTO Famous_Females VALUES ( 12, "Amy Schumer", 40);
+INSERT INTO Famous_Females VALUES ( 13, "Ali Wong", 40); 
+
+
+CREATE TABLE About_Famous (id INTEGER PRIMARY KEY, From_State TEXT, Children INTEGER, Relationship TEXT, Known_For TEXT, Other_Interest TEXT);
+
+INSERT INTO About_Famous VALUES (1, "California", 0, "Dating", "Youtube", "Model"); 
+INSERT INTO About_Famous VALUES (2, "California", 4, "Divorced", "Influencer", "Model");
+INSERT INTO About_Famous VALUES (3, "Pennsylvania", 0, "Dating", "Podcasting", NULL); 
+INSERT INTO About_Famous VALUES (4, "California", 1, "Single", "Model", "Influencer");
+INSERT INTO About_Famous VALUES (5, "Michigan", 0, "Single", "Singer", NULL); 
+INSERT INTO About_Famous VALUES (6, "Michigan", 1, "Married", "Athlete", NULL); 
+INSERT INTO About_Famous VALUES (7, "United Kingdom", 1, "Divorced", "Model", NULL); 
+INSERT INTO About_Famous VALUES (8, "California", 2, "Single", "Influencer", "Model"); 
+INSERT INTO About_Famous VALUES (9, "Pennsylvania", 0, "Married", "Comedian", "Actor");
+INSERT INTO About_Famous VALUES (10, "Arizona", 0, "Divorced", "Singer", NULL); 
+INSERT INTO About_Famous VALUES (11, "New Jersey", 4, "Married", "Actor", NULL);
+INSERT INTO About_Famous VALUES (12, "New York", 1, "Married", "Comedian", "Actor"); 
+INSERT INTO About_Famous VALUES (13, "California", 2, "Married", "Comedian", "Actor"); 
+
+Select * FROM Famous_Females;
+SELECT * FROM About_Famous;
+
+SELECT * 
+FROM Famous_Females 
+LEFT OUTER JOIN About_Famous
+ON Famous_Females.id = About_Famous.id; 
+
+SELECT COUNT(*) 
+FROM Famous_Females 
+JOIN About_Famous
+ON Famous_Females.id = About_Famous.id
+WHERE About_Famous.From_State = "California"; 
+
+SELECT Name AS "Famous_Females_From_California" 
+FROM Famous_Females 
+JOIN About_Famous
+ON Famous_Females.id = About_Famous.id
+WHERE About_Famous.From_State = "California"; 
+
+SELECT Famous_Females.Name, Famous_Females.Age, About_Famous.Children 
+FROM Famous_Females 
+JOIN About_Famous
+ON Famous_Females.id = About_Famous.id
+WHERE Children >= 2;
+
+SELECT Famous_Females.Name, Famous_Females.Age, About_Famous.Children, About_Famous.Relationship 
+FROM Famous_Females 
+JOIN About_Famous
+ON Famous_Females.id = About_Famous.id
+WHERE Relationship = "Divorced"
+AND Children >= 1;
+
+SELECT Famous_Females.Name, Famous_Females.Age, About_Famous.Known_For, About_Famous.Other_Interest 
+FROM Famous_Females 
+LEFT OUTER JOIN About_Famous
+ON Famous_Females.id = About_Famous.id
+WHERE Known_for = "Influencer"
+OR Other_Interest = "Influencer"; 
+
+SELECT Famous_Females.Name, About_Famous.Known_For, About_Famous.Other_Interest 
+FROM Famous_Females 
+LEFT OUTER JOIN About_Famous
+ON Famous_Females.id = About_Famous.id
+WHERE Known_for = "Singer" 
+OR Known_for = "Comedian"
+OR Known_for = "Actor"
+OR Other_Interest = "Actor"; 
