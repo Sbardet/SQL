@@ -1,0 +1,33 @@
+CREATE TABLE Workout_Log  ( Name TEXT, Date TEXT, Workout_type TEXT, Distance_Miles INTEGER, Calories_Burned INTEGER);
+
+INSERT INTO Workout_Log VALUES ("Shelby", "4/11", "Rowing", 10, 400); 
+INSERT INTO Workout_Log VALUES ("Robbie", "4/11", "Running", 4, 450); 
+INSERT INTO Workout_Log VALUES ("Shelby", "4/12", "Hiking",3, 250);
+INSERT INTO Workout_Log VALUES ("Robbie", "4/12", "Running", 6, 712); 
+INSERT INTO Workout_Log VALUES ("Mariah", "4/12", "Biking", 8, 400); 
+INSERT INTO Workout_Log VALUES ("Shelby", "4/13", "Hiking", 4, 400); 
+INSERT INTO Workout_Log VALUES ("Mariah", "4/13", "Hiking",4, 415); 
+INSERT INTO Workout_Log VALUES ("Robbie", "4/14", "Running", 4, 500); 
+INSERT INTO Workout_Log VALUES ("Mariah", "4/14", "Biking", 6, 345); 
+INSERT INTO Workout_Log VALUES ("Shelby", "4/15", "Rowing", 12, 495);
+INSERT INTO Workout_Log VALUES ("Robbie", "4/15", "Running", 3, 345);
+INSERT INTO Workout_Log VALUES ("Mariah", "4/15", "Hiking",3, 390); 
+INSERT INTO Workout_Log VALUES ("Shelby", "4/16", "Rowing", 10, 415);
+INSERT INTO Workout_Log VALUES ("Robbie", "4/16", "Running", 6, 710);
+INSERT INTO Workout_Log VALUES ("Mariah", "4/16", "Running", 2, 215); 
+
+SELECT * FROM Workout_Log;
+
+UPDATE Workout_Log SET name = "Shelby Bardet"
+WHERE name = "Shelby";
+UPDATE Workout_Log SET name = "Robbie Heartfield"
+WHERE name = "Robbie";
+UPDATE Workout_Log SET name = "Mariah Moss"
+WHERE name = "Mariah";
+
+SELECT * FROM Workout_Log;
+
+DELETE FROM Workout_Log
+WHERE name = "Robbie Heartfield"; 
+
+Select * FROM Workout_Log; 
