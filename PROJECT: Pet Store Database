@@ -1,3 +1,6 @@
+#In this project we were instructed to create a database with relevant items you would find in a store 
+#Create 5 queries 
+
 CREATE TABLE pet_shop (id INTEGER PRIMARY KEY, Item_Name TEXT, Inventory INTEGER, Price INTEGER, Aisel INTEGER); 
 
 INSERT INTO pet_shop VALUES (1, "Collars", 20,10,1);
@@ -18,4 +21,25 @@ INSERT INTO pet_shop VALUES (15, "Training Treats", 15,10,3);
 
 SELECT * FROM pet_shop;
 
-SELECT * FROM pet_shop WHERE Inventory > 10 ORDER BY Aisel;
+#Display database in order of price 
+  SELECT * FROM pet_shop
+  ORDER BY price desc;
+  
+#Display items that are low inventory 
+  SELECT Item_Name AS Low_Inventory
+  FROM pet_shop
+  WHERE Inventory < 15; 
+   
+#Display the average cost of all items    
+  SELECT AVG(Price) AS Average_Price 
+  FROM pet_shop;  
+  
+#Display items what are more expensive then the store average
+  SELECT item_name, price 
+  FROM pet_shop 
+  WHERE price > (SELECT AVG(price) FROM pet_shop); 
+   
+#Display all items arranged by aisel
+  Select Item_name, Aisel 
+  FROM pet_shop
+  ORDER BY AISEL ASC; 
