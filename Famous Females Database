@@ -1,3 +1,6 @@
+#In this project we were to crate two separate tables. My first table contains famous females, the second contains corresponding information 
+#Then query the data to show relevant data 
+
 CREATE TABLE Famous_Females (id INTEGER PRIMARY KEY, Name TEXT, Age Integer);
 
 INSERT INTO Famous_Females VALUES ( 1, "Emma Chamberlin", 20) ;
@@ -34,48 +37,55 @@ INSERT INTO About_Famous VALUES (13, "California", 2, "Married", "Comedian", "Ac
 Select * FROM Famous_Females;
 SELECT * FROM About_Famous;
 
-SELECT * 
-FROM Famous_Females 
-LEFT OUTER JOIN About_Famous
-ON Famous_Females.id = About_Famous.id; 
+#Join both tables together 
+  SELECT * 
+  FROM Famous_Females 
+  LEFT OUTER JOIN About_Famous
+  ON Famous_Females.id = About_Famous.id; 
 
-SELECT COUNT(*) 
-FROM Famous_Females 
-JOIN About_Famous
-ON Famous_Females.id = About_Famous.id
-WHERE About_Famous.From_State = "California"; 
+#Show how many of these females are from California  
+  SELECT COUNT(*) 
+  FROM Famous_Females 
+  JOIN About_Famous
+  ON Famous_Females.id = About_Famous.id
+  WHERE About_Famous.From_State = "California"; 
 
-SELECT Name AS "Famous_Females_From_California" 
-FROM Famous_Females 
-JOIN About_Famous
-ON Famous_Females.id = About_Famous.id
-WHERE About_Famous.From_State = "California"; 
+#Display who is from California
+  SELECT Name AS "Famous_Females_From_California" 
+  FROM Famous_Females 
+  JOIN About_Famous
+  ON Famous_Females.id = About_Famous.id
+  WHERE About_Famous.From_State = "California"; 
 
-SELECT Famous_Females.Name, Famous_Females.Age, About_Famous.Children 
-FROM Famous_Females 
-JOIN About_Famous
-ON Famous_Females.id = About_Famous.id
-WHERE Children >= 2;
+#Display the Females and their age with two or more children
+  SELECT Famous_Females.Name, Famous_Females.Age, About_Famous.Children 
+  FROM Famous_Females 
+  JOIN About_Famous
+  ON Famous_Females.id = About_Famous.id
+  WHERE Children >= 2;
 
-SELECT Famous_Females.Name, Famous_Females.Age, About_Famous.Children, About_Famous.Relationship 
-FROM Famous_Females 
-JOIN About_Famous
-ON Famous_Females.id = About_Famous.id
-WHERE Relationship = "Divorced"
-AND Children >= 1;
+#Show The Names that have at least one child and are also divorced 
+  SELECT Famous_Females.Name, Famous_Females.Age, About_Famous.Children, About_Famous.Relationship 
+  FROM Famous_Females 
+  JOIN About_Famous
+  ON Famous_Females.id = About_Famous.id
+  WHERE Relationship = "Divorced"
+  AND Children >= 1;
 
-SELECT Famous_Females.Name, Famous_Females.Age, About_Famous.Known_For, About_Famous.Other_Interest 
-FROM Famous_Females 
-LEFT OUTER JOIN About_Famous
-ON Famous_Females.id = About_Famous.id
-WHERE Known_for = "Influencer"
-OR Other_Interest = "Influencer"; 
+#Display Females who are known for being an influencer
+  SELECT Famous_Females.Name, Famous_Females.Age, About_Famous.Known_For, About_Famous.Other_Interest 
+  FROM Famous_Females 
+  LEFT OUTER JOIN About_Famous
+  ON Famous_Females.id = About_Famous.id
+  WHERE Known_for = "Influencer"
+  OR Other_Interest = "Influencer"; 
 
-SELECT Famous_Females.Name, About_Famous.Known_For, About_Famous.Other_Interest 
-FROM Famous_Females 
-LEFT OUTER JOIN About_Famous
-ON Famous_Females.id = About_Famous.id
-WHERE Known_for = "Singer" 
-OR Known_for = "Comedian"
-OR Known_for = "Actor"
-OR Other_Interest = "Actor"; 
+#Show names of comedians, actors, and singers 
+  SELECT Famous_Females.Name, About_Famous.Known_For, About_Famous.Other_Interest 
+  FROM Famous_Females 
+  LEFT OUTER JOIN About_Famous
+  ON Famous_Females.id = About_Famous.id
+  WHERE Known_for = "Singer" 
+  OR Known_for = "Comedian"
+  OR Known_for = "Actor"
+  OR Other_Interest = "Actor"; 
