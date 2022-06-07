@@ -1,3 +1,7 @@
+#In this project we were to crate our table of data what we might find stored in a app. 
+#I crated a fitness app that containded workout logs from three different individuals 
+#Then we were to use select statements to make an UPDATE and DELETE 
+
 CREATE TABLE Workout_Log  ( Name TEXT, Date TEXT, Workout_type TEXT, Distance_Miles INTEGER, Calories_Burned INTEGER);
 
 INSERT INTO Workout_Log VALUES ("Shelby", "4/11", "Rowing", 10, 400); 
@@ -16,18 +20,23 @@ INSERT INTO Workout_Log VALUES ("Shelby", "4/16", "Rowing", 10, 415);
 INSERT INTO Workout_Log VALUES ("Robbie", "4/16", "Running", 6, 710);
 INSERT INTO Workout_Log VALUES ("Mariah", "4/16", "Running", 2, 215); 
 
-SELECT * FROM Workout_Log;
+#Show the table 
+  SELECT * FROM Workout_Log;
+  
+#Update the name to show clients first and last name 
+  UPDATE Workout_Log SET name = "Shelby Bardet"
+  WHERE name = "Shelby";
+  UPDATE Workout_Log SET name = "Robbie Heartfield"
+  WHERE name = "Robbie";
+  UPDATE Workout_Log SET name = "Mariah Moss"
+  WHERE name = "Mariah";
 
-UPDATE Workout_Log SET name = "Shelby Bardet"
-WHERE name = "Shelby";
-UPDATE Workout_Log SET name = "Robbie Heartfield"
-WHERE name = "Robbie";
-UPDATE Workout_Log SET name = "Mariah Moss"
-WHERE name = "Mariah";
+#Show updated results 
+  SELECT * FROM Workout_Log;
 
-SELECT * FROM Workout_Log;
+#Delete someone from the table 
+  DELETE FROM Workout_Log
+  WHERE name = "Robbie Heartfield"; 
 
-DELETE FROM Workout_Log
-WHERE name = "Robbie Heartfield"; 
-
-Select * FROM Workout_Log; 
+#Show new table 
+  Select * FROM Workout_Log; 
