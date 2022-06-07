@@ -1,4 +1,4 @@
-#In this project we were instructed to create a database with relevant items you would find in a store 
+#In this project we were instructed to create a database with relevant items you would find in a store. 
 #Create 5 queries 
 
 CREATE TABLE pet_shop (id INTEGER PRIMARY KEY, Item_Name TEXT, Inventory INTEGER, Price INTEGER, Aisel INTEGER); 
