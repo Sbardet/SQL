@@ -1,3 +1,5 @@
+#In this project, we downloaded a set of data and then queried it to show relevent data 
+
 CREATE TABLE superbowls(
   Date      TEXT PRIMARY KEY,
   SB         TEXT,
@@ -65,30 +67,50 @@ INSERT INTO superbowls(Date,SB,Winner,Winner_Pts,Loser,Loser_Pts,MVP,Stadium,Cit
 INSERT INTO superbowls(Date,SB,Winner,Winner_Pts,Loser,Loser_Pts,MVP,Stadium,City,State) VALUES ('Jan 14 1968','II (2)','Green Bay Packers',33,'Oakland Raiders',14,'Bart Starr+','Orange Bowl','Miami','Florida');
 INSERT INTO superbowls(Date,SB,Winner,Winner_Pts,Loser,Loser_Pts,MVP,Stadium,City,State) VALUES ('Jan 15 1967','I (1)','Green Bay Packers',35,'Kansas City Chiefs',10,'Bart Starr+','Memorial Coliseum','Los Angeles','California');
 
+#Show the average number of ppints scored for both the winners and losers 
+  SELECT AVG(Winner_Pts) AS Average_Winning_Points
+  FROM superbowls;
+  
+  SELECT AVG(Loser_Pts) AS Average_Losing_Points 
+  FROM superbowls; 
 
-SELECT AVG(Winner_Pts) FROM superbowls;
-SELECT AVG(Loser_Pts) FROM superbowls; 
+#Display the team and year from the superbowls with the highest and lowest scoring winners
+  SELECT Winner, MAX(Winner_Pts), Date 
+  FROM superbowls;
 
-SELECT Winner, MAX(Winner_Pts), Date FROM superbowls;
-SELECT Winner,MIN(Winner_Pts), DATE FROM superbowls; 
+  SELECT Winner,MIN(Winner_Pts), DATE 
+  FROM superbowls; 
 
-SELECT Loser, MAX(Loser_pts), Date FROM superbowls;
-SELECT Loser, MIN(Loser_pts), Date FROM superbowls; 
+#Display the team and year from the superbowls with the highest and lowest scoring losers. 
+  SELECT Loser, MAX(Loser_pts), Date 
+  FROM superbowls;
+  
+  SELECT Loser, MIN(Loser_pts), Date 
+  FROM superbowls; 
 
-SELECT Winner, Winner_Pts, Date FROM superbowls
-ORDER BY Winner_Pts DESC; 
+#Show the winning teams arranged by final score high to low
+  SELECT Winner, Winner_Pts, Date 
+  FROM superbowls
+  ORDER BY Winner_Pts DESC; 
 
-SELECT Loser, Loser_Pts, Date FROM superbowls
-ORDER BY Loser_Pts DESC;	
+#Show the winning teams arranged by final score high to low
+  SELECT Loser, Loser_Pts, Date 
+  FROM superbowls
+  ORDER BY Loser_Pts DESC;	
 
-SELECT SB, Date, Winner, Loser FROM superbowls
-WHERE Winner = "New England Patriots"
-ORDER BY SB DESC; 
+#Display every time the Patriots one the superbowl 
+  SELECT SB, Date, Winner, Loser 
+  FROM superbowls
+  WHERE Winner = "New England Patriots"
+  ORDER BY SB DESC; 
 
-SELECT SB, Date, Winner, Winner_Pts, Loser, Loser_Pts FROM superbowls
-WHERE Loser = "Dallas Cowboys" 
-AND Winner = "Pittsburgh Steelers";
+#Show data from years the Dallas Cowboys lost to the steelers 
+  SELECT SB, Date, Winner, Winner_Pts, Loser, Loser_Pts 
+  FROM superbowls
+  WHERE Loser = "Dallas Cowboys" 
+  AND Winner = "Pittsburgh Steelers";
 
+#Display every Winner, Points scored, And if that was above or below the average. 
 SELECT Winner, Winner_Pts, 
     CASE 
     WHEN Winner_pts > 30.1 THEN "Above AVG Winning Points"
